@@ -1,38 +1,254 @@
 .App {
+  /* text-align: center; */
+}
+
+body {
+  background-color: #151515;
+  /* background: linear-gradient(#fff 80%, #000 100%); */
+  /* background-color: rgb(41, 41, 41); */
+}
+
+.button-container {
+  position: absolute;
+  bottom: 12px;
+  left: 46%;
+}
+
+button {
+  background-color: #00000000;
+  font-size: 22px;
+  color: #F17D16;
+  border-radius: 9px;
+  margin-top: 40px;
+
+  padding: 8px 16px;
+
+  width: fit-content;
+}
+
+.rotator {
+  transform: rotateX(60deg) rotateZ(45deg);
+}
+
+.layer-rotate {
+  transform: translate(-81px, -81px);
+}
+
+.compass {
+  position: relative;
+}
+
+.compass--arrow {
+  position: absolute;
+  bottom: 35px;
+  right: 35px;
+  width: 40px;
+  height: 40px;
+  transform: rotate(90deg);
+  transition: transform 1s;
+}
+
+.keyboardKey {
+  font-size: 28px;
+  font-weight: bold;
+  color: rgb(230, 230, 230);
+  border: 4px solid #88888844;
+  border-radius: 16px;
+  /* padding: 0px 10px 8px 10px; */
+  height: 50px;
+  width: 50px;
   text-align: center;
+  /* align-items: center; */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.keyboardKey.active {
+  color: rgb(255, 255, 255);
+  border-radius: 8px;
+  border-color: rgb(221, 224, 208);
+  background-color: #ffffffaa;
+  box-shadow: 0px 0px 12px white;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.bttn:hover {
+  transform: translate(0, 8px);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.arrow-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    ". up ."
+    "left down right";
+  gap: 10px;
+
+  border-radius: 20px;
+  padding: 20px 0px;
+  width: 180px;
+}
+
+.key-up {
+  line-height: 45px;
+  grid-area: up;
+}
+
+.key-down {
+
+  line-height: 45px;
+  grid-area: down;
+}
+
+.key-left {
+  grid-area: left;
+}
+
+.key-right {
+  grid-area: right;
+}
+
+.header {
+  width: 100%;
+  height: 200px;
+  background-color: rgb(41, 41, 41);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer {
+  background-color: rgb(34, 22, 22);
+  width: 100%;
+  height: 230px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.two-pane {
+  width: 100%;
+  /* background-color: green; */
+  display: flex;
+  justify-content: center;
+  height: 78%;
+  z-index: 2;
+}
+
+.two-pane>.left {
+  width: 1800px;
+  /* background-color: rgb(41, 41, 41); */
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.two-pane>.right {
+  width: 1600px;
+  padding: 35px 0;
+  padding-top: 120px;
+  /* background-color: rgb(41, 41, 41); */
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+  align-items: center;
+}
+
+.foot {
+  position: absolute;
+  left: 320px;
+  bottom: 80px;
+}
+
+.progress-bar-label {
+  font-size: 18px;
+  color: #ffffffcc;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 5px;
+}
+
+.inactive {
+  color: #ffffff44;
+}
+
+
+.layer-num {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  /* font-family: 'IBM Plex Serif', cursive; */
+  font-family: 'lobster', cursive;
+  font-size: 32px;
 }
 
-.App-link {
-  color: #61dafb;
+h3 {
+  /* font-family: 'IBM Plex Serif', cursive;
+  font-size: 18px;
+  color: #ffffff88;
+  letter-spacing: 2px;
+  margin-bottom: 00px; */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+p {
+  /* font-family: 'IBM Plex Serif', serif;
+  width: 770px;
+  line-height: 38px;
+  display: block;
+  font-size: 20px;
+  text-align: left;
+  margin-left: 100px;
+  margin-bottom: 40px;
+  color: black; */
+}
+
+.spacer {
+  width: 100%;
+}
+
+.bg {
+  z-index: -1;
+  position: absolute;
+  top: 0px;
+  clip-path: polygon(0 0, 70% 0%, 65% 100%, 0% 100%);
+  background-color: #fafafa;
+  width: 85%;
+  height: 850px;
+}
+
+strong {
+  /* font-family: 'Abril Fatface', cursive; */
+  /* letter-spacing: 2px;
+  margin: 0 5px;
+  color: #000000bb;
+  border-bottom: 2px dashed #00000044; */
+  /* font-style: italic; */
+}
+
+.arr {
+  font-size: 42px;
+  margin: 0 10px;
+  margin-top: 78px;
+}
+
+
+.rot-container {
+  cursor: pointer;
+}
+
+.rot-container:hover>.rot-me {
+  transform: translate(0px, 0px) rotate(-20deg);
+}
+
+.rot-container:hover>.rot-label {
+  color: yellow !important;
+  transform: translate(0px, -20px);
+}
+
+.dogear {
+  width: 200px;
+  height: 300px;
+  background-color: #222;
+  transform: translate(20px, 0) rotate(30deg);
 }
