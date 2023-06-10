@@ -59,11 +59,11 @@ function LandingContent() {
     );
 }
 
-function LandingDiagram({ diag, buttonPressed, diagramHovered }: any) {
+function LandingDiagram({ diag, buttonPressed, diagramHovered, fnClick }: any) {
     return (
         <>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '10px' }}>
-                <DoomScroller diag={diag} buttonPressed={buttonPressed} active={diagramHovered}></DoomScroller>
+                <DoomScroller diag={diag} buttonPressed={buttonPressed} active={diagramHovered} fnClick={fnClick}></DoomScroller>
             </div>
         </>
     );
@@ -498,7 +498,7 @@ export default function ScrollerSpread() {
     const spreads = [
         [
             (diag: any, buttonPressed: any, diagramHovered: any) => <LandingContent />,
-            (diag: any, buttonPressed: any, diagramHovered: any) => <LandingDiagram diag={diag} buttonPressed={buttonPressed} diagramHovered={diagramHovered} />
+            (diag: any, buttonPressed: any, diagramHovered: any, fnClick: any) => <LandingDiagram diag={diag} buttonPressed={buttonPressed} diagramHovered={diagramHovered} fnClick={fnClick} />
         ],
         MatrixOperationsPage(),
         MatrixTranslationPage(),

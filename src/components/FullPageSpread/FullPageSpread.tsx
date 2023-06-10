@@ -101,7 +101,19 @@ function FullPageSpread({ spreads }: any) {
                             </div>
                         </div>
                         <div style={{ ...styles.page, ...(diagramHovered ? { borderColor: 'white' } : { borderColor: '#ffffff44' }) }} tabIndex={0} onKeyDown={(e: any) => diagramHovered ? onKeyDownEvent(e) : undefined} onKeyUp={onKeyUpEvent} onClick={() => setDiagramHovered(true)} onMouseLeave={() => setDiagramHovered(false)}>
-                            {spread[1](diag, buttonPressed, diagramHovered)}
+                            {
+                                spread[1](
+                                    diag,
+                                    buttonPressed,
+                                    diagramHovered,
+                                    (keyCode: string) => {
+                                        onKeyDownEvent({ code: keyCode });
+                                        setTimeout(() => {
+                                            onKeyUpEvent({ code: keyCode });
+                                        }, 100);
+                                    }
+                                )
+                            }
                         </div>
                     </div>
                 </div>

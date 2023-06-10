@@ -2,8 +2,18 @@
   /* text-align: center; */
 }
 
+
+html,
+body,
+#root,
+#root>.App {
+  height: 100%;
+  width: 100%;
+}
+
 body {
   background-color: #151515;
+
   /* background: linear-gradient(#fff 80%, #000 100%); */
   /* background-color: rgb(41, 41, 41); */
 }
@@ -15,7 +25,7 @@ body {
 }
 
 button {
-  background-color: #00000000;
+  /* background-color: #00000000;
   font-size: 22px;
   color: #F17D16;
   border-radius: 9px;
@@ -23,7 +33,7 @@ button {
 
   padding: 8px 16px;
 
-  width: fit-content;
+  width: fit-content; */
 }
 
 .rotator {
@@ -251,4 +261,57 @@ strong {
   height: 300px;
   background-color: #222;
   transform: translate(20px, 0) rotate(30deg);
+}
+
+.btn {
+  background-color: #ffd00088;
+}
+
+.btn:hover {
+  background-color: #ffd000ff;
+}
+
+.shake-anim {
+  animation: shake 12.42s cubic-bezier(.93, .03, .03, .03) both infinite;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.anim--shake__small__fast {
+  animation: shake 0.42s cubic-bezier(.06, .07, .09, .07) both infinite;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.anim--shake__big {
+  animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both infinite;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }

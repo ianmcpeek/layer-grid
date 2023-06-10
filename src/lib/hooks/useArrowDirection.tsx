@@ -34,7 +34,8 @@ function useArrowDirection() {
             if (directionCodes[code] === 'DOWN') setDownPressed(false);
         },
         onKeyDownEvent: (event: any) => {
-            event.preventDefault();
+
+            event.preventDefault && event.preventDefault();
             const { code } = event;
             const directionCodes: any = {
                 'ArrowRight': 'RIGHT',
@@ -55,7 +56,98 @@ function useArrowDirection() {
         leftPressed,
         rightPressed,
         direction,
-        diag
+        diag, newDir
+    }
+}
+
+
+// we want to be notified whenever a click event has happened
+export function useArrowKeyClicked(fnOnClick: Function, fnSpaceBar: Function) {
+    const [keys, setKeys] = useState({
+        held: {
+            up: false,
+            left: false,
+            down: false,
+            right: false,
+            space: false
+        },
+        clicked: {
+            up: false,
+            left: false,
+            down: false,
+            right: false,
+            space: false,
+        }, clicks: 0
+    });
+
+    const directionCodes: any = {
+        'ArrowRight': 'RIGHT',
+        'ArrowLeft': 'LEFT',
+        'ArrowUp': 'UP',
+        'ArrowDown': 'DOWN',
+    };
+    const letterCodes: any = {
+        'KeyD': 'RIGHT',
+        'KeyA': 'LEFT',
+        'KeyW': 'UP',
+        'KeyS': 'DOWN',
+    };
+
+    function isArrowKey(code: string) {
+        return directionCodes[code] !== undefined || letterCodes[code] !== undefined;
+    }
+
+    return {
+        onKeyUpEvent: (event: any) => {
+            event.preventDefault && event.preventDefault();
+            const { code } = event;
+            console.log('code', code);
+
+            const modified = { ...keys };
+            const clicked = {
+                up: false,
+                left: false,
+                down: false,
+                right: false,
+                space: false
+            }
+            let dir = 'RIGHT';
+
+            if (directionCodes[code] === 'UP' || letterCodes[code] === 'UP') { modified.held.up = false; clicked.up = true; dir = 'UP'; }
+            else if (directionCodes[code] === 'LEFT' || letterCodes[code] === 'LEFT') { modified.held.left = false; clicked.left = true; dir = 'LEFT'; }
+            else if (directionCodes[code] === 'DOWN' || letterCodes[code] === 'DOWN') { modified.held.down = false; clicked.down = true; dir = 'DOWN'; }
+            else if (directionCodes[code] === 'RIGHT' || letterCodes[code] === 'RIGHT') { modified.held.right = false; clicked.right = true; dir = 'RIGHT'; }
+            if (code === 'Space') {
+                modified.held.space = false;
+                clicked.space = true;
+                fnSpaceBar();
+            }
+            if (isArrowKey(code)) {
+                modified.clicked = clicked;
+                modified.clicks += 1;
+                fnOnClick(dir);
+                setKeys(modified);
+            }
+        },
+        onKeyDownEvent: (event: any) => {
+            event.preventDefault && event.preventDefault();
+            const { code } = event;
+            const modified = { ...keys };
+
+
+            if (directionCodes[code] === 'UP' || letterCodes[code] === 'UP') { modified.held.up = true; }
+            else if (directionCodes[code] === 'LEFT' || letterCodes[code] === 'LEFT') { modified.held.left = true; }
+            else if (directionCodes[code] === 'DOWN' || letterCodes[code] === 'DOWN') { modified.held.down = true; }
+            else if (directionCodes[code] === 'RIGHT' || letterCodes[code] === 'RIGHT') { modified.held.right = true; }
+
+            if (code === 'Space') { modified.held.space = true; }
+
+
+            setKeys(modified);
+        },
+        held: keys.held,
+        clicked: keys.clicked,
+        clicks: keys.clicks,
     }
 }
 

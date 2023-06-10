@@ -1,5 +1,7 @@
 import { LayerGrid } from "../../components/Grid/LayerGrid";
+import { ColorLayerConfiguration, LayerConfiguration, LayeredGrid, LayeredGridBaseConfiguration } from "../../components/Grid/LayeredGrid";
 import { LayerThemes } from "../../lib/utils/ColorUtil";
+import { MatrixUtil } from "../../lib/utils/MatrixUtil";
 
 const configs = [
     {
@@ -85,40 +87,181 @@ const layerPacks = [
     },
 ];
 
-// const props: any = {
-//     config: configs[0],
-//     layers: [
-//         // {
-//         //     layerId: 'foo',
-//         //     backgroundColor: '#FF000022',
-//         //     borderColor: '#FFFF2288',
-//         //     innerBorder: false,
-//         //     cells: [
-//         //         [1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1],
-//         //         [1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0],
-//         //         [1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0],
-//         //     ]
-//         // },
-//         // {
-//         //     layerId: 'foo1',
-//         //     backgroundColor: '#FF00FF22',
-//         //     borderColor: '#11FF2288',
-//         //     innerBorder: false,
-//         //     cells: [
-//         //         [0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1],
-//         //         [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1],
-//         //         [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
-//         //     ]
-//         // }
-//     ]
+// great config for cell cursor!
+
+// const layeredConfig: LayeredGridBaseConfiguration = {
+//     dimensions: [3, 3],
+//     frame: {
+//         padding: 10,
+//         border: {
+//             color: '#ffffff',
+//             width: 10,
+//             opacity: 'ff',
+//             radius: 8,
+//             style: 'dashed'
+//         }
+//     }
 // };
+
+const layeredConfig: LayeredGridBaseConfiguration = {
+    dimensions: [3, 3],
+    cellLength: 80,
+    border: {
+        color: '#ffffff',
+        width: 4,
+        opacity: '.2',
+        radius: 40,
+    },
+    frame: {
+        padding: 20,
+        border: {
+            color: '#ffffff',
+            width: 4,
+            opacity: '22',
+            radius: 60,
+            style: 'dashed'
+        }
+    },
+};
+
+const iconConfig: LayeredGridBaseConfiguration = {
+    dimensions: [3, 3],
+    showCoord: true,
+    cellLength: 80,
+    border: {
+        color: '#ffffff',
+        width: 4,
+        opacity: '.2',
+        radius: 40,
+    },
+    frame: {
+        padding: 20,
+        border: {
+            color: '#ffffff',
+            width: 4,
+            opacity: '22',
+            radius: 60,
+            style: 'dashed'
+        }
+    },
+};
+
+const IconLayers: any[] = [
+    {
+        id: '0',
+        matrix: MatrixUtil.from([3, 3], [
+            0, 1, 1,
+            1, 0, 1,
+            1, 0, 1,
+        ]),
+        type: 'Icon',
+        icon: 'person'
+    },
+];
+
+const rotatedLayers: ColorLayerConfiguration[] = [
+    {
+        id: '0',
+        matrix: MatrixUtil.from([3, 3], [
+            1, 1, 1,
+            1, 1, 1,
+            1, 1, 1,
+        ]),
+        type: 'Color',
+        border: {
+            color: '#FFFF22',
+            width: 4,
+            radius: 40,
+            opacity: '0.53'
+        },
+        innerBorder: true,
+        backgroundColor: '#FF000022'
+    },
+    {
+        id: '1',
+        matrix: MatrixUtil.from([3, 3], [
+            1, 1, 1,
+            1, 1, 1,
+            1, 1, 0,
+        ]),
+        type: 'Color',
+        border: {
+            color: '#FFFF22',
+            width: 4,
+            radius: 40,
+            opacity: '0.53'
+        },
+        innerBorder: true,
+        backgroundColor: '#FF000022'
+    },
+    {
+        id: '2',
+        matrix: MatrixUtil.from([3, 3], [
+            1, 1, 1,
+            1, 0, 0,
+            1, 0, 0,
+        ]),
+        type: 'Color',
+        border: {
+            color: '#FFFF22',
+            width: 4,
+            radius: 40,
+            opacity: '0.53'
+        },
+        innerBorder: true,
+        backgroundColor: '#FF000022'
+    },
+    {
+        id: '3',
+        matrix: MatrixUtil.from([3, 3], [
+            1, 1, 1,
+            1, 1, 1,
+            1, 1, 1,
+        ]),
+        type: 'Color',
+        border: {
+            color: '#FFFF22',
+            width: 4,
+            radius: 40,
+            opacity: '0.53'
+        },
+        innerBorder: true,
+        backgroundColor: '#FF000022'
+    },
+];
 
 function Rotate() {
 
     return (
         <div className="App">
-            <div className='grid-container'>
-                <LayerGrid classes="rotator" config={configs[0]} layers={layerPacks[0].layers}></LayerGrid>
+            <div style={{ backgroundColor: 'green', padding: '20px 60px' }}>
+                <div style={{ display: 'flex', columnGap: '100px' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <LayerGrid config={configs[0]} layers={layerPacks[0].layers}></LayerGrid>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <LayerGrid classes="rotator" config={configs[0]} layers={layerPacks[0].layers}></LayerGrid>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <LayeredGrid config={layeredConfig} layers={rotatedLayers}></LayeredGrid>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <LayeredGrid config={{ ...layeredConfig, rotated: true }} layers={rotatedLayers}></LayeredGrid>
+
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <LayeredGrid config={iconConfig} layers={IconLayers}></LayeredGrid>
+
+                    </div>
+                </div>
 
             </div>
         </div>

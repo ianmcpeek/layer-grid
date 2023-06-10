@@ -14,6 +14,8 @@ export type Tuple = [number, number];
 
 
 export const MatrixUtil = {
+    equal: (a: [number, number], b: [number, number]) => a[0] === b[0] && a[1] === b[1],
+    inBounds: (dim: [number, number], p: [number, number]) => p[0] >= 0 && p[0] < dim[0] && p[1] >= 0 && p[1] < dim[1],
     from: (dimensions: Tuple, values: any[]): Matrix => {
         const rows = [];
         for (let i = 0; i < dimensions[0]; i++) {
@@ -90,4 +92,12 @@ export const MatrixUtil = {
             dimensions: source.dimensions
         };
     },
+    iterate: (source: Matrix, fnDo: ([i, j]: [number, number], val: any) => void) => {
+        const rows = source.rows.map(row => ([...row]));
+        rows.forEach((row, i) => {
+            row.forEach((cell, j) => {
+                fnDo([i, j], cell);
+            });
+        });
+    }
 }

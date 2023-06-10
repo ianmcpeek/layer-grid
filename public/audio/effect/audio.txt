@@ -1,0 +1,10 @@
+-- Mapping of Audio Files to Sound Effects --
+
+Death : "8BIT_RETRO_Explosion_Long_Distant_Fade_mono",
+Crack1: "IMPACT_Stone_On_Stone_02_Subtle_mono",
+Crack2: "IMPACT_Stone_On_Stone_01_Subtle_mono",
+GemPickup: "8BIT_RETRO_Coin_Collect_Two_Dual_Note_Fast_Twinkle_mono",
+Detected: "ALARM_Distorted_Echo_loop_stereo",
+worldMusic:"Point and Click",
+movementBlocked: "8BIT_RETRO_Hit_Bump_Thump_mono",
+cracklingFire: "THRUSTER_Deep_Powerful_Burning_Air_Big_Flames_loop_mono"

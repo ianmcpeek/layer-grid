@@ -12,9 +12,9 @@ function PersonSVG() {
             </svg> */}
 
             {/* <svg style={{ width: '30%' }} xmlns="http://www.w3.org/2000/svg" width="44" height="107" viewBox="0 0 44 107" fill="none">
-            <ellipse cx="22.0919" cy="14.099" rx="11.9816" ry="12.099" fill="#FF5C00" stroke="#B44100" stroke-width="4" />
-            <rect x="9.2168" y="33.6179" width="25.7512" height="71.3822" rx="10" fill="#FF5C00" stroke="#B44100" stroke-width="4" />
-            <path d="M2 43.7273C2 37.2505 7.25048 32 13.7273 32H30.2727C36.7495 32 42 37.2505 42 43.7273V55C42 66.0457 33.0457 75 22 75V75C10.9543 75 2 66.0457 2 55V43.7273Z" fill="#FF5C00" stroke="#B44100" stroke-width="4" />
+            <ellipse cx="22.0919" cy="14.099" rx="11.9816" ry="12.099" fill="#FF5C00" stroke="#B44100" strokeWidth="4" />
+            <rect x="9.2168" y="33.6179" width="25.7512" height="71.3822" rx="10" fill="#FF5C00" stroke="#B44100" strokeWidth="4" />
+            <path d="M2 43.7273C2 37.2505 7.25048 32 13.7273 32H30.2727C36.7495 32 42 37.2505 42 43.7273V55C42 66.0457 33.0457 75 22 75V75C10.9543 75 2 66.0457 2 55V43.7273Z" fill="#FF5C00" stroke="#B44100" strokeWidth="4" />
             <rect x="11" y="59" width="22" height="31" fill="#FF5C00" />
         </svg> */}
 

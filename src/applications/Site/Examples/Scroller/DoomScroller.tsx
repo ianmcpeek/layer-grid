@@ -157,7 +157,7 @@ function useTimer({ fnTick, delayInMS }: any) {
 }
 
 
-function DoomScroller({ diag, buttonPressed, active }: any) {
+function DoomScroller({ diag, buttonPressed, active, fnClick }: any) {
     const [landscape, setLandscape] = useState(getLandscape);
 
     const landscapeLayers = [
@@ -242,7 +242,7 @@ function DoomScroller({ diag, buttonPressed, active }: any) {
                                 }
                             }} />
                         </div>
-                        <KeyboardControls {...buttonPressed}></KeyboardControls>
+                        <KeyboardControls {...buttonPressed} fnClick={fnClick}></KeyboardControls>
                     </div>
 
 

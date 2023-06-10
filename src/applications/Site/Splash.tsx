@@ -2,14 +2,14 @@ import { monokai } from "react-code-blocks";
 import { useNavigate } from "react-router-dom";
 import { LinkAvatar } from "../../components/PreviewLink";
 import { LayerGrid } from "../../components/Grid/LayerGrid";
-import { LayerThemes } from "../../lib/utils/ColorUtil";
+import { Colors, LayerThemes } from "../../lib/utils/ColorUtil";
 import { Font_Body } from "../../lib/utils/FontUtil";
 
 // Data
 
 const con: any = {
     dimensions: [12, 12],
-    cellLength: 50,
+    cellLength: 35,
     border: {
         radius: 20,
         width: 6,
@@ -196,13 +196,13 @@ const styles: any = {
     title: {
         fontFamily: `'Eczar', cursive`,
         // textAlign: 'right',
-        fontSize: '128px',
+        fontSize: '86px',
         marginBottom: '-40px',
         fontWeight: '600'
     },
     titleBefore: {
         fontFamily: `'Eczar', cursive`,
-        fontSize: '24px',
+        fontSize: '20px',
         marginTop: '40px',
         marginBottom: '-30px',
         color: '#ffffffaa',
@@ -215,7 +215,7 @@ const styles: any = {
     titleAfter: {
         fontFamily: `'Eczar', cursive`,
         // textAlign: 'right',
-        fontSize: '24px',
+        fontSize: '20px',
         letterSpacing: '1px',
         color: '#ffffffaa',
         fontWeight: '700'
@@ -277,54 +277,30 @@ function Splash() {
 
                     <LayerGrid config={con} layers={[layersCombined[0], layersCombined[1], layersCombined[2]]}></LayerGrid>
                 </div>
-                {/* <p style={styles.codeBlock}>
-                    <CodeBlock
-                        text={'foo'}
-                        {...codeBlockConfig}
-                    />
-                </p> */}
-                {/* <ArticleSection header='Configuration'>
-                    <div style={{
-                        display: 'flex',
-                        columnGap: '40px'
-                    }}>
-                        <div style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            rowGap: '58px'
-                        }}>
-                            <LayerGrid config={conLg} layers={[]}></LayerGrid>
-                            <LayerGrid config={conSquat} layers={[]}></LayerGrid>
-                        </div>
-                        <div style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            rowGap: '240px'
-                        }}>
-                            <LayerGrid config={conRound} layers={[]}></LayerGrid>
-                            <LayerGrid config={conStick} layers={[]}></LayerGrid>
-                        </div>
-                        <div>
-                            <LayerGrid config={conTall} layers={[]}></LayerGrid>
-                        </div>
-                    </div>
-                </ArticleSection>
-                <GridArt></GridArt> */}
-                {/* <ArticleSection header='Layers'></ArticleSection> */}
                 <div>
-                    <h2 style={{ color: '#ffffffaa', fontSize: '32px', fontFamily: 'Eczar', marginBottom: 0, letterSpacing: '2px' }}>Examples</h2>
+                    <h2 style={{ color: '#ffffffaa', fontSize: '32px', fontFamily: 'Eczar', marginBottom: 0, letterSpacing: '4px' }}>PLAY</h2>
                     <hr style={{ margin: 0 }}></hr>
                     <div style={{
                         display: 'grid',
-                        gridTemplateColumns: '1fr 1fr 1fr',
+                        gridTemplateColumns: '1fr 1fr',
                         marginTop: '40px',
                         gap: '40px'
                     }}>
+                        <div style={{ display: 'flex', alignItems: 'center', columnGap: '30px', cursor: 'pointer' }} onClick={() => navigate('gems')}>
+                            <LinkAvatar />
+                            <h3 style={{
+                                ...Font_Body,
+                                fontSize: '24px',
+                                fontWeight: '200',
+                                letterSpacing: '1px',
+                                color: 'white'
+                            }}>Gem Thief <br /><i style={{ color: Colors.HotPink }}>New</i></h3>
+                        </div>
                         <div style={{ display: 'flex', alignItems: 'center', columnGap: '30px', cursor: 'pointer' }} onClick={() => navigate('scroll')}>
                             <LinkAvatar />
                             <h3 style={{
                                 ...Font_Body,
-                                fontSize: '28px',
+                                fontSize: '24px',
                                 fontWeight: '200',
                                 letterSpacing: '1px',
                                 color: 'white'
